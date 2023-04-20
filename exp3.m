@@ -20,8 +20,16 @@ for i=1:n:h
  end
  end
 end
-subplot(1,2,1);
+%Quantization
+img2=img;
+img2(img<=63) = 32  ; %% 00
+img2(img<=127&img>63)  = 85  ; %% 01
+img2(img<=191&img>127) = 159 ; %% 10
+img2(img<=255&img>191) = 223 ; %% 11
+subplot(1,3,1);
 imshow(uint8(img1));title('Original Image');
-subplot(1,2,2);
+subplot(1,3,2);
 imshow(uint8(im));title('Sampled Image');
-
+subplot(1,3,3);
+imshow(img2);
+title('Quantized Image Using 2-Level Quantizer');
