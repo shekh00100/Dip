@@ -1,0 +1,21 @@
+clc;
+clear all;
+close all;
+pkg load image;
+img = rgb2gray(imread('p1.jpg'));
+Img=imread('p1.jpg');
+subplot(2,2,1);
+imshow(Img);
+title('Original Image');
+subplot(2,2,2);
+imhist(img);
+title('Histogram of Original Image');
+l=255;
+neg_img=l-Img;
+subplot(2,2,3);
+imshow(neg_img);
+title('Negative Image');
+subplot(2,2,4);
+imhist(neg_img);
+title('Histogram of Negative Image');
+

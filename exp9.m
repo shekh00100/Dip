@@ -1,0 +1,32 @@
+pkg load image;
+pkg load matgeom;
+clc;
+close all;
+clear all;
+Img=imread('p1.jpg');
+subplot(3,2,1);
+imshow(Img);
+title('Original Image');
+%Removing alternate rows and columns
+[m,n]=size(Img);
+b=Img(2:2:m,2:2:n);
+subplot(3,2,2);
+imshow(b);
+title('Removing alternate rows and columns');
+%Separating RGB Components
+redCh=Img(:,:,1);
+greenCh=Img(:,:,2);
+blueCh=Img(:,:,3);
+blacks=zeros(size(redCh));
+redCmp= cat(3,redCh,blacks,blacks);
+greenCmp= cat(3,blacks,greenCh,blacks);
+blueCmp= cat(3,blacks,blacks,blueCh);
+subplot(3,2,3);
+imshow(redCmp);
+title('Red Component');
+subplot(3,2,4);
+imshow(greenCmp);
+title('Green Component');
+subplot(3,2,5);
+imshow(blueCmp);
+title('Blue Component');
